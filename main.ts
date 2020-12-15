@@ -9,8 +9,8 @@ controller.A.onEvent(ControllerButtonEvent.Pressed, function () {
 sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSprite) {
     game.over(false)
 })
-let tree: Sprite = null
 let level = 0
+let tree: Sprite = null
 let speed = 0
 let mySprite: Sprite = null
 game.showLongText("Usa la flecha arriba o botton A para evitar los obstaculos", DialogLayout.Bottom)
@@ -46,7 +46,7 @@ floor = sprites.create(img`
     55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
     `, SpriteKind.Enemy)
 floor.setPosition(76, 1)
-game.onUpdateInterval(2000 / level, function () {
+game.onUpdateInterval(2000 / 1, function () {
     count += 1
     if (count >= 10) {
         count = randint(1, 9)
@@ -59,7 +59,7 @@ game.onUpdateInterval(2000 / level, function () {
         tree.setVelocity(-50, 0)
     }
 })
-game.onUpdateInterval(2000 / level, function () {
+game.onUpdateInterval(2000 / 1, function () {
     tree = sprites.create(Obstacles[randint(0, 3)], SpriteKind.Enemy)
     tree.setPosition(170, 0)
     tree.setVelocity(-50, 0)
