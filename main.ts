@@ -10,8 +10,10 @@ sprites.onOverlap(SpriteKind.Player, SpriteKind.Enemy, function (sprite, otherSp
     game.over(false)
 })
 let tree: Sprite = null
+let level = 0
 let speed = 0
 let mySprite: Sprite = null
+game.showLongText("Usa la flecha arriba o botton A para evitar los obstaculos", DialogLayout.Bottom)
 scene.setBackgroundColor(0)
 let Obstacles = [sprites.duck.log6, sprites.duck.log7, sprites.duck.log4, sprites.duck.log8]
 mySprite = sprites.create(img`
@@ -33,7 +35,6 @@ mySprite = sprites.create(img`
     . . . . . . . . . . . . . . . . 
     `, SpriteKind.Player)
 speed = 10
-let level = 1
 let count = 0
 let floor = sprites.create(img`
     55555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555555
@@ -51,17 +52,17 @@ game.onUpdateInterval(2000 / level, function () {
         count = randint(1, 9)
         tree = sprites.create(Obstacles[randint(0, 3)], SpriteKind.Enemy)
         tree.setPosition(170, 50)
-        tree.setVelocity(-50 + level * -10, 0)
+        tree.setVelocity(-50, 0)
     } else {
         tree = sprites.create(Obstacles[randint(0, 3)], SpriteKind.Enemy)
         tree.setPosition(170, 100)
-        tree.setVelocity(-50 + level * -10, 0)
+        tree.setVelocity(-50, 0)
     }
 })
 game.onUpdateInterval(2000 / level, function () {
     tree = sprites.create(Obstacles[randint(0, 3)], SpriteKind.Enemy)
     tree.setPosition(170, 0)
-    tree.setVelocity(-50 + level * -10, 0)
+    tree.setVelocity(-50, 0)
 })
 forever(function () {
     mySprite.setVelocity(0, speed)
